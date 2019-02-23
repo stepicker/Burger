@@ -1,0 +1,25 @@
+{
+  "name": "burger",
+  "version": "1.0.0",
+  "description": "Burger Eating App",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/stepicker/Burger.git"
+  },
+  "author": "Stefano Picker",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/stepicker/Burger/issues"
+  },
+  "homepage": "https://github.com/stepicker/Burger#readme",
+  "dependencies": {
+    "dotenv": "^6.2.0",
+    "express": "^4.16.4",
+    "express-handlebars": "^3.0.1",
+    "mysql": "^2.16.0"
+  }
+}

@@ -1,0 +1,49 @@
+<h1>Burgers!!</h1>
+
+<h2>Ready to devour:</h2>
+
+<ul>
+  {{#each burger}}
+    {{#unless this.devoured}}
+    <div>
+        <form action="/burgers/{{this.id}}" method="PUT">
+            <button type="submit"> {{this.burger_name}}</button>
+        </form>
+    </div>
+    {{/unless}}
+  {{/each}}
+</ul>
+
+<h2>Devoured:</h2>
+
+<ul>
+  {{#each burger}}
+    {{#if this.devoured}}
+    <div>
+        <div>
+            {{this.burger_name}}
+        </div>
+    </div>
+    {{/if}}
+  {{/each}}
+</ul>
+
+<h2>Add a Burger</h2>
+<form action="/api/burgers" method="POST">
+    <input type="text" id="burger-name" name="burger_name" placeholder="Type the name of a new burger">
+</form>
+<button id="add-burger">Add!</button>
+
+<script type="text/javascript">
+    console.log("JS loaded");
+    $("#add-burger").on("click", function(){
+        console.log("We got clicked");
+        $.ajax({
+            url: "/api/burgers",
+            type: "post",
+            data: {burger_name: $("#burger-name").val().trim()}
+        }).then(function(data){
+            console.log(data);
+        })
+    })
+</script>
