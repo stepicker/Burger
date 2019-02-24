@@ -1,8 +1,8 @@
 <h2>Add a New Burger:</h2>
-<form action="/api/burgers" method="POST">
+<form>
     <input type="text" id="burger-name" name="burger_name" placeholder="Name of a new burger...">
+    <button id="add-burger" type="submit">Add!</button>
 </form>
-<button id="add-burger">Add!</button>
 
 <h2>Ready to devour:</h2>
 
@@ -32,14 +32,20 @@
 <script type="text/javascript">
 
     $("#add-burger").on("click", function(){
-        $.ajax({
-            url: "/api/burgers",
-            type: "post",
-            data: {burger_name: $("#burger-name").val().trim()}
-        }).then(function(data){
-            console.log(data);
-            location.reload();
-        })
+        event.preventDefault();
+        var addedBurger = $("#burger-name").val().trim();
+        if (addedBurger === "") {
+            alert("Please type the name of a burger!");
+        } else {
+            $.ajax({
+                url: "/api/burgers",
+                type: "post",
+                data: {burger_name: addedBurger}
+            }).then(function(data){
+                console.log(data);
+                location.reload();
+            })
+        }
     });
 
     $(document).on("click", ".devour-burger", function(){
