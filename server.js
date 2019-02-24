@@ -3,8 +3,10 @@ var app = express();
 
 var PORT = process.env.PORT || 6789;
 
+var path = require("path");
+
 // Define public folder for static content
-app.use(express.static("public"));
+app.use(express.static(__dirname + '/public'));
 
 // Parse request body as JSON
 app.use(express.urlencoded({ extended: true }));

@@ -1,32 +1,33 @@
+<h2>Add a New Burger:</h2>
+<form action="/api/burgers" method="POST">
+    <input type="text" id="burger-name" name="burger_name" placeholder="Name of a new burger...">
+</form>
+<button id="add-burger">Add!</button>
+
 <h2>Ready to devour:</h2>
 
 <ul>
   {{#each burger}}
     {{#unless this.devoured}}
-    <div>{{this.burger_name}}<button class="devour-burger" data-id="{{this.id}}">Devour!</button></div>
+    <div><p>{{this.burger_name}}</p><button class="devour-burger" data-id="{{this.id}}">Devour!</button></div>
     {{/unless}}
   {{/each}}
 </ul>
 
-<h2>Devoured:</h2>
+<h2>Already Devoured:</h2>
 
 <ul>
   {{#each burger}}
     {{#if this.devoured}}
     <div>
         <div>
-            {{this.burger_name}}
+            <p>{{this.burger_name}}</p>
         </div>
     </div>
     {{/if}}
   {{/each}}
 </ul>
 
-<h2>Add a Burger:</h2>
-<form action="/api/burgers" method="POST">
-    <input type="text" id="burger-name" name="burger_name" placeholder="Type the name of a new burger">
-</form>
-<button id="add-burger">Add!</button>
 
 <script type="text/javascript">
 
