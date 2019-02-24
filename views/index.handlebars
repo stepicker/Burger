@@ -31,8 +31,7 @@
 
 <script type="text/javascript">
 
-    $("#add-burger").on("click", function(event){
-        event.preventDefault();
+    $("#add-burger").on("click", function(){
         var addedBurger = $("#burger-name").val().trim();
         if (addedBurger === "") {
             alert("Please type the name of a burger!");
