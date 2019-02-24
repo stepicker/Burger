@@ -7,7 +7,6 @@ var burger = {
         });
     },
     insertOne: function(newBurger, cb) {
-        console.log("What the heck are you???", newBurger);
         orm.insertOne(newBurger, function(res) {
             cb(res);
         });

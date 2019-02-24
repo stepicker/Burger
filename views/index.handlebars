@@ -1,15 +1,9 @@
-<h1>Burgers!!</h1>
-
 <h2>Ready to devour:</h2>
 
 <ul>
   {{#each burger}}
     {{#unless this.devoured}}
-    <div>
-        <form action="/burgers/{{this.id}}" method="PUT">
-            <button type="submit"> {{this.burger_name}}</button>
-        </form>
-    </div>
+    <div>{{this.burger_name}}<button class="devour-burger" data-id="{{this.id}}">Devour!</button></div>
     {{/unless}}
   {{/each}}
 </ul>
@@ -28,16 +22,15 @@
   {{/each}}
 </ul>
 
-<h2>Add a Burger</h2>
+<h2>Add a Burger:</h2>
 <form action="/api/burgers" method="POST">
     <input type="text" id="burger-name" name="burger_name" placeholder="Type the name of a new burger">
 </form>
 <button id="add-burger">Add!</button>
 
 <script type="text/javascript">
-    console.log("JS loaded");
+
     $("#add-burger").on("click", function(){
-        console.log("We got clicked");
         $.ajax({
             url: "/api/burgers",
             type: "post",
@@ -45,5 +38,17 @@
         }).then(function(data){
             console.log(data);
         })
-    })
+    });
+
+    $(document).on("click", ".devour-burger", function(){
+        var clickedID = $(this).attr("data-id");
+        $.ajax({
+            url: "/api/burgers/" + clickedID,
+            type: "put",
+            data: {id: clickedID}
+        }).then(function(data){
+            console.log(data);
+        })
+    });
+
 </script>
